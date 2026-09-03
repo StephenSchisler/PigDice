@@ -20,7 +20,11 @@ void hold(GameState &mg); // ends here
 
 int main() {
     GameState my_game; // instantiate a GameState object
-    //display_rules(); // call the display_rules function
+    std::cout << "Let's Play PIG Dice!\n" << std::endl;
+    std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
+    std::cout << "* Turn ends when you hold or roll a 1." << std::endl;
+    std::cout << "* If you roll a 1, you lose all points for the turn." << std::endl;
+    std::cout << "* If you hold, you bank all points for the turn to the game score\n" << std::endl;
     play_game(my_game); // call the play_game function and pass the GameState object
     return 0;
 }
@@ -40,13 +44,13 @@ void play_game(GameState &mg) {
         }
     }
     std::cout << "You finished wih a final score of " << mg.game_score << " in " << mg.turn_count << " turns!" << std::endl;
-    std::cout << "\nThanks for playing PIG Dice!" << std::endl;
+    std::cout << "Thanks for playing PIG Dice!" << std::endl;
 }
 void take_turn(GameState &mg) {
     mg.turn_count++; // means the same thing as mg.turn_count = mg.turn_count + 1
-    std::cout << "TURN " << mg.turn_count << " - Game Score: " << mg.game_score << std::endl;
+    std::cout << "TURN " << mg.turn_count << " - Game Score: " << mg.game_score;
     while (!mg.turn_over) {
-        std::cout << "\nroll or hold? (r/h): " << std::endl;
+        std::cout << "\nroll or hold? (r/h): " ;//<< std::endl;
         std::cin >> mg.choice;
         if (mg.choice == 'r') {
             roll(mg);
@@ -59,7 +63,7 @@ void take_turn(GameState &mg) {
         }
 
     }
-    std::cout << "\nScore Banked This Turn: " << mg.score_this_turn << std::endl;
+    std::cout << "Score Banked This Turn: " << mg.score_this_turn << "\n" << std::endl;
 }
 
 void roll(GameState &mg) {
