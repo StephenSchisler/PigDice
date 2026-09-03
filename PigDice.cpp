@@ -59,7 +59,7 @@ void take_turn(GameState &mg) {
             hold(mg);
         }
         else {
-            std::cout << "Invalid choice!"<< std::endl;
+            std::cout << "Invalid choice!";
         }
 
     }
@@ -71,7 +71,7 @@ void roll(GameState &mg) {
     int die = rand() % 6 + 1;
     std::cout << "Die: " << die;
     if (die == 1) {
-        std::cout << "\nTurn over. No score.";
+        std::cout << "\nTurn over. No score.\n" ;
         mg.score_this_turn = 0;
         mg.turn_over = true;
     }
