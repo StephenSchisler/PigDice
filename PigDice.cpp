@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <random>
 
 // Build your solution starting from this code.
 
@@ -13,6 +14,47 @@ struct GameState {
     bool turn_over = false;
 };
 
+class Die {
+private:
+    int m_value;
+    int m_numbOfSides;
+public:
+    Die() { // default contructor
+        m_value = 0;
+        m_numbOfSides = 6;
+    }
+
+    void set_numbOfSides(int numbOfSides) {
+        switch (numbOfSides) {
+            case 4:
+                m_numbOfSides = 4;
+                break;
+            case 6:
+                m_numbOfSides = 6;
+                break;
+            case 8:
+                m_numbOfSides = 8;
+                break;
+            defalut:
+                m_numbOfSides = 6;
+                break;
+        }
+        m_numbOfSides = numbOfSides;
+    }
+
+    void set_value() {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution dis(1, m_numbOfSides);
+        m_value = dis(gen);
+    }
+
+    int get_value() {
+        // rules for accessing the data
+        return m_value;
+    }
+};
+
 void take_turn(GameState &mg); // prototype statements starts here
 void play_game(GameState &mg); // note: with "&" makes it a reference variable
 void roll(GameState &mg); // reference varibles give an address insted of copys of the variable
@@ -20,6 +62,8 @@ void hold(GameState &mg); // ends here
 
 int main() {
     GameState my_game; // instantiate a GameState object
+    Die my_dice;
+    my_dice.set_value();
     std::cout << "Let's Play PIG Dice!\n" << std::endl;
     std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
     std::cout << "* Turn ends when you hold or roll a 1." << std::endl;
