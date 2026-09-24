@@ -19,12 +19,12 @@ private:
     int m_value;
     int m_numbOfSides;
 public:
-    Die() { // default contructor
-        m_value = 0;
+    Die() { // default contructor (sets defalt values for it variables)
         m_numbOfSides = 6;
+        set_value();
     }
 
-    void set_numbOfSides(int numbOfSides) {
+    void setNumbOfSides(int numbOfSides) {
         switch (numbOfSides) {
             case 4:
                 m_numbOfSides = 4;
@@ -41,7 +41,11 @@ public:
         }
         m_numbOfSides = numbOfSides;
     }
-
+    /*
+    int getNumOfSides(){
+        return m_value;
+    }
+    */
     void set_value() {
         std::random_device rd;
         std::mt19937 gen(rd());
@@ -62,13 +66,12 @@ void hold(GameState &mg); // ends here
 
 int main() {
     GameState my_game; // instantiate a GameState object
-    Die my_dice;
-    my_dice.set_value();
     std::cout << "Let's Play PIG Dice!\n" << std::endl;
     std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
     std::cout << "* Turn ends when you hold or roll a 1." << std::endl;
     std::cout << "* If you roll a 1, you lose all points for the turn." << std::endl;
     std::cout << "* If you hold, you bank all points for the turn to the game score\n" << std::endl;
+
     play_game(my_game); // call the play_game function and pass the GameState object
     return 0;
 }
@@ -111,16 +114,20 @@ void take_turn(GameState &mg) {
 }
 
 void roll(GameState &mg) {
+    /*
     srand(time(NULL));
     int die = rand() % 6 + 1;
-    std::cout << "Die: " << die;
-    if (die == 1) {
+    */
+    Die my_die; // cals the defualt comstructor
+    my_die.set_value(); // calling the public function to roll the die
+    std::cout << "Die: " << my_die.get_value();
+    if (my_die.get_value() == 1) {
         std::cout << "\nTurn over. No score.\n" ;
         mg.score_this_turn = 0;
         mg.turn_over = true;
     }
     else {
-        mg.score_this_turn += die;
+        mg.score_this_turn += my_die.get_value();
         std::cout << " - Running score this turn: " << mg.score_this_turn;
     }
 }
