@@ -2,6 +2,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <random>
+#include "DIE.h"
 
 // Build your solution starting from this code.
 
@@ -14,6 +15,7 @@ struct GameState {
     bool turn_over = false;
 };
 
+/*
 class Die {
 private:
     int m_value;
@@ -41,11 +43,7 @@ public:
         }
         m_numbOfSides = numbOfSides;
     }
-    /*
-    int getNumOfSides(){
-        return m_value;
-    }
-    */
+
     void set_value() {
         std::random_device rd;
         std::mt19937 gen(rd());
@@ -58,6 +56,7 @@ public:
         return m_value;
     }
 };
+*/
 
 void take_turn(GameState &mg); // prototype statements starts here
 void play_game(GameState &mg); // note: with "&" makes it a reference variable
@@ -118,7 +117,7 @@ void roll(GameState &mg) {
     srand(time(NULL));
     int die = rand() % 6 + 1;
     */
-    Die my_die; // cals the defualt comstructor
+    Die my_die; // calls the defualt comstructor
     my_die.set_value(); // calling the public function to roll the die
     std::cout << "Die: " << my_die.get_value();
     if (my_die.get_value() == 1) {
