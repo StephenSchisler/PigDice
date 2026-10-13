@@ -3,9 +3,11 @@
 #include <cstdlib>
 #include <random>
 #include "DIE.h"
+#include "PDGame.h"
 
 // Build your solution starting from this code.
 
+/*
 struct GameState {
     char choice;
     int turn_count = 0;
@@ -14,6 +16,7 @@ struct GameState {
     bool game_over = false;
     bool turn_over = false;
 };
+*/
 
 /*
 class Die {
@@ -57,13 +60,18 @@ public:
     }
 };
 */
-
+/*
 void take_turn(GameState &mg); // prototype statements starts here
 void play_game(GameState &mg); // note: with "&" makes it a reference variable
 void roll(GameState &mg); // reference varibles give an address insted of copys of the variable
 void hold(GameState &mg); // ends here
+*/
 
 int main() {
+
+    PDGame game;
+
+    /*
     GameState my_game; // instantiate a GameState object
     std::cout << "Let's Play PIG Dice!\n" << std::endl;
     std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
@@ -72,11 +80,12 @@ int main() {
     std::cout << "* If you hold, you bank all points for the turn to the game score\n" << std::endl;
 
     play_game(my_game); // call the play_game function and pass the GameState object
+    */
     return 0;
 }
 
 
-
+/*
 void play_game(GameState &mg) {
     while (!mg.game_over){
         take_turn(mg); // 1st,  take your the turn
@@ -117,6 +126,7 @@ void roll(GameState &mg) {
     srand(time(NULL));
     int die = rand() % 6 + 1;
     */
+    /*
     Die my_die; // calls the defualt comstructor
     my_die.set_value(); // calling the public function to roll the die
     std::cout << "Die: " << my_die.get_value();
@@ -134,3 +144,4 @@ void roll(GameState &mg) {
 void hold(GameState &mg) {
     mg.turn_over = true;
 }
+*/

@@ -7,14 +7,11 @@
 
 class Die {
 private:
-    int m_value;
-    int m_numbOfSides;
+    int m_dieValue;
 public:
     Die();
-    void setNumbOfSides(int numbOfSides);
-    int getNumbOfSides();
-    void set_value();
-    int get_value();
+    void rollDie();
+    int getDieValue() const;
 };
 
 #endif //PIGDICE_DIE_H
