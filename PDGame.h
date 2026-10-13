@@ -9,6 +9,7 @@ private:
     int m_gameScore;
 public:
     PDGame();
+    int getGameScore(); // 1.
 private:
     void displayRules();
     void playGame();

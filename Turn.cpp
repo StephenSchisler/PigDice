@@ -3,6 +3,7 @@
 //
 #include <iostream> // global level library (in ideal conditions, this code is placed above the local level librarys)
 #include "Turn.h" // note: this is called a local level library
+#include "PDGame.h" // 8.
 
 Turn::Turn() { // defalt constructor: will set default values for variables
     m_turnCount = 0;
@@ -11,11 +12,15 @@ Turn::Turn() { // defalt constructor: will set default values for variables
     m_choice = '\0'; // \0 is called the Null Character (it represents that a character is explisitly nothinng)
 }
 
+void Turn::setParentGame(PDGame* parentGame) { // 6.
+    m_parentGame = parentGame;
+}
+
 void Turn::takeTurn() {
     m_turnCount++; // means the same thing as mg.turn_count = mg.turn_count + 1
     std::cout << "TURN " << m_turnCount;
-    //std::cout << " - Game Score: " << mg.game_score;//m_gameScore is in PDGame, come back later
-    //ISSUE: the "part" Turn object needs access to m_gameScore from the "whole", PDGame.
+    std::cout << " - Game Score: " << m_parentGame->getGameScore(); // 9. note: when you need to invoke a POINTER to an object rather than an object itself, use an arow "<-" insted of a dot "."
+    //PAST ISSUE: the "part" Turn object needs access to m_gameScore from the "whole", PDGame. Check nubered commented code peaces for steps.
     while (!m_turnOver) {
         std::cout << "\nroll or hold? (r/h): " ;//<< std::endl;
         std::cin >> m_choice;

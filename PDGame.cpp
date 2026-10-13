@@ -7,8 +7,15 @@
 PDGame::PDGame() { // this has to call/invoke the other 2 functions in this file, since only this function is public in PDGame
     m_gameOver = false;
     m_gameScore = 0;
+
+    m_myTurn.setParentGame(this); // 7. (also, this spesific spot matters. also also, this is a new key word, which is a pointer to itself)
+
     displayRules();
     playGame();
+}
+
+int PDGame::getGameScore() { // 2.
+    return m_gameScore;
 }
 
 void PDGame::displayRules() {
