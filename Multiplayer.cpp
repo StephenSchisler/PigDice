@@ -35,6 +35,22 @@ void Multiplayer::mpPlayGame() {
     }
 }
 
+void Multiplayer::checkForWinner(){
+    std::vector<int> over50(m_players.size());
+    for (int i = 0; i < m_players.size(); i++) {
+        if (m_players.at(i).getGameScore() >= 50) {
+            over50.at(i) = m_players.at(i).getGameScore();
+            m_mpGameOver = true;
+        }
+    }
+    if (m_mpGameOver) {
+        auto it = std::max_element(over50.begin(), over50.end());
+        long long index = std::distance(over50.begin(),it);
+        std::cout << "\nCongratulations! " << m_players[index].getPlayerName() << " you win with a score of " << m_players[index].getGameScore() << std::endl;
+    }
+}
+
+/*
 void Multiplayer::checkForWinner() {
     std::string winName;
     winName = "blank";
@@ -53,6 +69,7 @@ void Multiplayer::checkForWinner() {
         }
     }
 }
+*/
 
 void Multiplayer::displayScoreBoard() {
     for (int i = 0; i < m_players.size(); i++) {
