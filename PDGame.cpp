@@ -10,8 +10,8 @@ PDGame::PDGame() { // this has to call/invoke the other 2 functions in this file
 
     m_myTurn.setParentGame(this); // 7. (also, this spesific spot matters. also also, this is a new key word, which is a pointer to itself)
 
-    displayRules();
-    playGame();
+    //displayRules();
+    //playGame();
 }
 
 int PDGame::getGameScore() { // 2.

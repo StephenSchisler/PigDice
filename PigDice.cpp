@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <random>
 #include "DIE.h"
+#include "Multiplayer.h"
 #include "PDGame.h"
 
 // Build your solution starting from this code.
@@ -69,7 +70,9 @@ void hold(GameState &mg); // ends here
 
 int main() {
 
-    PDGame game;
+    //PDGame game;
+
+    Multiplayer game;
 
     /*
     GameState my_game; // instantiate a GameState object
